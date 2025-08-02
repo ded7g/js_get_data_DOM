@@ -5,12 +5,13 @@ const numbers = [];
 let sum = 0;
 
 for (let q = 0; q < population.length; q++) {
-  numbers.push(population[q].innerText);
-}
+  const numStr = population[q].innerText.replace(/,/g, '');
+  const num = parseInt(numStr, 10);
 
-for (let w = 0; w < numbers.length; w++) {
-  numbers[w] = parseInt(numbers[w].split(',').join(''));
-  sum += numbers[w];
+  if (!isNaN(num)) {
+    numbers.push(num);
+    sum += num;
+  }
 }
 
 const chislo = sum / numbers.length;
